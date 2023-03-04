@@ -1,0 +1,34 @@
+<app-bloggy-header></app-bloggy-header>
+
+<div class="container">
+  <br />
+
+  <div>
+    <h4 class="center-align">Posts récents :</h4>
+  </div>
+
+  <br />
+
+  <!-- Adds a row for each post in PostList with its data -->
+  <div *ngFor="let Post of PostsList">
+    <div class="post row">
+      <img class="image" [src]="Post.image_url" />
+
+      <div class="post-overview">
+        <h4 class="post-title">{{ Post.title }}</h4>
+        <h5 class="resume">{{ Post.resume }}</h5>
+        <h6>
+          Par {{ getAuthorById(Post) }}, le
+          {{ Post.created_at | date : "dd/MM/yyyy" }}
+        </h6>
+
+        <br />
+
+        <!-- Button for redirecting to specific post view -->
+        <button (click)="goToPost(Post)" type="button" class="consult-article">
+          Consulter l'article
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

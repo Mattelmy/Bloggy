@@ -1,0 +1,30 @@
+<app-bloggy-header></app-bloggy-header>
+
+<div class="container">
+  <br />
+
+
+  <div class="post">
+
+    <!-- Title and author display -->
+    <div class="post-content">
+      <h3>{{ post?.title }}</h3>
+      <h5 class="author">par {{ getAuthorById(post) }}</h5>
+    </div>
+
+    <div class="center-align">
+      <img class="img" [src]="post?.image_url" />
+    </div>
+
+    <div class="post-content">
+      <p>{{ post?.content }}</p>
+    </div>
+
+    <!-- Button for returning to general posts view-->
+    <div class="center-align">
+      <button (click)="goToPosts()" type="button" class="consult-posts">
+        Back to posts
+      </button>
+    </div>
+  </div>
+</div>

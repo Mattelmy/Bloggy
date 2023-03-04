@@ -1,0 +1,121 @@
+<app-bloggy-header></app-bloggy-header>
+
+<div class="container">
+    <div class="title">
+        <h3>Edit post : {{post?.title}}</h3>
+    </div>
+
+    <div class="form">
+        <form #form="ngForm" (ngSubmit)="submit(form.value)">
+
+            <!-- Post title input -->
+            <div>
+                <label for="title">Post title</label>
+                <div class="flex">
+                    <input id="title" name="title" value="{{post?.title}}" placeholder="Post title" type="text"
+                        minlength="{{titleMaxLength}}" class="input form-control" #title="ngModel" ngModel />
+
+                    <!-- Display characters left before reaching max limit -->
+                    <div class="counter" *ngIf="title.dirty">
+                        <p>{{titleMaxLength - title.value.length}}</p>
+                    </div>
+                </div>
+
+                <!-- Check if title is not empty (after editing data)-->
+                <div *ngIf="title.dirty" class="alert">
+                    <div *ngIf="title.value.length == 0">Post name required!</div>
+                </div>
+
+                <!-- Check if article name is not already taken by another post -->
+                <div class="alert" *ngIf="checkIfPostNameTaken(title)">Post name already taken!</div>
+            </div>
+
+            <br />
+
+            <!-- Author input -->
+            <div>
+                <label for="author_id">Author</label>
+
+                <!-- Dropdown menu for selecting the author -->
+                <select name="author_id" id="author_id" class="form-control browser-default" #author_id="ngModel"
+                    ngModel>
+                    <option value="" disabled hidden>{{getAuthorById(post)}}</option>
+                    <option *ngFor="let author of AuthorsList" value="{{author.id}}">{{author.full_name}}</option>
+                </select>
+            </div>
+
+            <br />
+
+            <!-- Image input -->
+            <div>
+                <label for="image_url">Image</label>
+
+                <input id="image_url" name="image_url" value="{{post?.image_url}}" placeholder="Image URL" type="text"
+                    class="input form-control" #image_url="ngModel" ngModel />
+
+                <!-- Check if title is not empty (after editing data)-->
+                <div *ngIf="image_url.dirty" class="alert">
+                    <div *ngIf="image_url.value.length == 0">Image URL required!</div>
+                </div>
+            </div>
+
+            <br />
+
+            <!-- Resume input -->
+            <div>
+                <label for="resume">Post resume</label>
+
+                <div class="flex">
+                    <input required id="resume" name="resume" maxlength="{{resumeMaxLength}}" value="{{post?.resume}}"
+                        placeholder="Post resume" type="text" class="input form-control" #resume="ngModel" ngModel />
+
+                    <!-- Display characters left before reaching max limit -->
+                    <div class="counter" *ngIf="resume.dirty">
+                        <p>{{resumeMaxLength - resume.value.length}}</p>
+                    </div>
+                </div>
+
+                <!-- Check if resume is not empty (after clicking and exiting the input) -->
+                <div *ngIf="resume.dirty" class="alert">
+                    <div *ngIf="resume.value.length == 0">Resume required!</div>
+                </div>
+            </div>
+
+            <br />
+
+            <!-- Content Input -->
+            <div>
+                <label for="content">Content</label>
+
+                <textarea required id="content" name="content" value="{{post?.content}}" placeholder="Content"
+                    class="materialize-textarea" #content="ngModel" ngModel></textarea>
+
+                <!-- Check if content is not empty (after clicking and exiting the input)-->
+                <div *ngIf="content.invalid && content.dirty " class="alert">
+                    <div *ngIf="content.value.length == 0">Post content required!</div>
+                </div>
+
+            </div>
+
+            <br />
+
+            <!-- Buttons -->
+            <div class=" flex center-align">
+
+                <button class="button red" (click)="goToAdmin()">
+                    Cancel
+                </button>
+
+                <!-- Disable submit button if any error occurs in the form, forcing the user to correct the data -->
+                <!-- Data length is set to 0 by default if input fields are left untouched, so checking dirty property at the same time is needed
+                     in order to avoid disabling the button if some fields are not edited -->
+                <button
+                    [disabled]="(title.value?.length == 0 && title.dirty) || checkIfPostNameTaken(title) ||
+                    (image_url.value?.length == 0 && image_url.dirty) || (resume.value?.length == 0 && resume.dirty) || (content.value?.length == 0 && content.dirty)"
+                    class="button" type="submit">
+                    Save
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

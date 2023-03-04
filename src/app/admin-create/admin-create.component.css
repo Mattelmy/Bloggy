@@ -1,0 +1,67 @@
+.title {
+    margin-left: 15vw;
+    margin-bottom: 70px;
+}
+
+.form {
+    margin-left: 20vw;
+    margin-right: 20vw;
+}
+
+.input {
+    font-family: 'Lucida Sans';
+}
+
+.alert {
+    color: red;
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.browser-default {
+    font-family: 'Lucida Sans';
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.default-option {
+    color: rgb(156, 156, 156);
+}
+
+.flex {
+    display: flex;
+}
+
+.counter {
+    padding-left: 10px;
+    font-weight: 500;
+    width: 10px;
+}
+
+.button {
+    background-color: green;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: white;
+    padding: 10px;
+    width: 28vw;
+    border-radius: 20px;
+    border: 0px;
+    font-size: 15pt;
+    justify-content: flex-start;
+    transition-duration: 0.5s;
+}
+
+.button:hover {
+    cursor: pointer;
+}
+
+.button:disabled {
+    cursor: not-allowed;
+    background-color: rgb(235, 235, 235);
+    color: rgb(154, 154, 154);
+}
+
+.red {
+    background-color: red;
+}

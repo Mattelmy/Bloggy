@@ -1,0 +1,22 @@
+.not-found {
+    margin: 30px;
+}
+
+img.not-found {
+    width: 400px;
+    height: 400px;
+}
+
+.consult-posts {
+    background-color: green;
+    color: white;
+    padding: 20px;
+    border-radius: 40px;
+    border: 0px;
+    margin-top: 40px;
+    font-size: 18pt;
+}
+
+.consult-posts:hover {
+    cursor: pointer;
+}

@@ -1,0 +1,21 @@
+img {
+  margin-top: 40px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  height: 300px;
+  width: 800px;
+}
+
+.consult-posts {
+  background-color: green;
+  color: white;
+  padding: 20px;
+  border-radius: 40px;
+  border: 0px;
+  margin-top: 40px;
+  font-size: 18pt;
+}
+
+.consult-posts:hover {
+  cursor: pointer;
+}

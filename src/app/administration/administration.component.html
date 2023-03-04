@@ -1,0 +1,48 @@
+<app-bloggy-header></app-bloggy-header>
+
+<div class="container">
+    <br />
+
+    <div class="title">
+        <h3>Administration</h3>
+    </div>
+
+    <!-- Create post button -->
+    <div class="create-post">
+        <button class="button" (click)="goToEdit()">
+            <div>
+                <img class="add-icon" src="https://img.icons8.com/ios-glyphs/30/FFFFFF/plus-math.png" />
+                Create post
+            </div>
+
+        </button>
+    </div>
+
+    <!-- Post listing table-->
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>Image</th>
+            <th>Title</th>
+            <th>Autor</th>
+            <th>Date</th>
+            <th>Actions</th>
+        </tr>
+
+        <!-- Adds a row for each post in PostList with its data:-->
+        <tr *ngFor="let Post of PostsList">
+            <th>{{Post.id}}</th>
+            <td><img [src]="Post.image_url"></td>
+            <td><a href="posts/{{Post.id}}">{{Post.title}}</a></td>
+            <td>{{getAuthorById(Post)}}</td>
+            <td>{{ Post.created_at | date : "dd/MM/yyyy" }}</td>
+            <!-- Edit and delete buttons -->
+            <td>
+                <a href="admin/{{Post.id}}/edit"><img class="icon"
+                        src="https://img.icons8.com/ios-glyphs/30/null/pencil--v2.png" /></a>
+                <a (click)="deletePost(Post.id)"><img class="icon"
+                        src="https://img.icons8.com/ios-filled/50/null/delete--v1.png" /></a>
+            </td>
+        </tr>
+    </table>
+</div>

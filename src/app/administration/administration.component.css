@@ -1,0 +1,51 @@
+.title {
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-bottom: 100px;
+}
+
+img {
+    width: 40px;
+    height: 40px;
+    border-radius: 3px;
+}
+
+.icon {
+    width: 30px;
+    height: 30px;
+}
+
+.button {
+    background-color: green;
+    color: white;
+    padding: 10px;
+    border-radius: 20px;
+    border: 0px;
+    font-size: 15pt;
+    margin-right: 20px;
+    justify-content: flex-start;
+}
+
+.button:hover {
+    cursor: pointer;
+}
+
+.create-post {
+    display: flex;
+    justify-content: right;
+    margin-top: -30px;
+    margin-bottom: 20px;
+}
+
+.add-icon {
+    width: 15px;
+    height: 15px;
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+td a {
+    margin-right: 5px;
+}
